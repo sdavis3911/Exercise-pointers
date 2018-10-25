@@ -1,5 +1,4 @@
-# Exercise-pointers
-Testing storing an exercise
+# Exercise-Pointers1
 
 We're revisiting a version of our cars.cpp program from last week and incorporating the pointer concepts from Chapter 11. Before beginning this exercise, make sure you are familiar with this version of the cars.cpp program and have read the pointer content of Chapter 11 and viewed the example code and videos.
 
