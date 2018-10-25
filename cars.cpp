@@ -19,18 +19,20 @@ Car GetCar(ifstream& dataIn);
 void WriteCar(Car car);
 
 int main () {
-  Car  car;
+  Car  *carPtr;     // Declare a pointer to a Car struct (This is only a pointer)
+  Car car;          // Still need a car variable to hold the actual data values
+  carPtr = &car;    // Point your carPtr at the memory location of car
   ifstream dataIn;
   int carCount = 0;
 
   dataIn.open("cars.dat");
 
-  car = GetCar(dataIn);
+  *carPtr = GetCar(dataIn);
   while (dataIn) {
-    car.price = car.price * 1.10;
-    WriteCar(car);
+    carPtr->price = carPtr->price * 1.10;
+    WriteCar(*carPtr);
     carCount++;
-    car = GetCar(dataIn);
+    *carPtr = GetCar(dataIn);
   }
 
   cout << carCount << " cars processed.\n";
