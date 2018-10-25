@@ -19,4 +19,4 @@ Ready? Now modify cars.cpp so that it uses the following definitions and assignm
   Car car;          // Still need a car variable to hold the actual data values
   carPtr = &car;    // Point your carPtr at the memory location of car </b>
 ```
-Submit: Updated and commented cars.cpp file. (Just to clarify, you shouldn't be changing either of the functions or modifying anything in car.h or cars.dat.)
++Submit: Updated and commented cars.cpp file. (Just to clarify, you shouldn't be changing either of the functions or modifying anything in car.h or cars.dat.)
