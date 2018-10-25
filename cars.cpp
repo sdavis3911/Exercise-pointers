@@ -11,12 +11,12 @@ using namespace std;
 
 // Pre:  File dataIn has been opened.
 // Post: The fields of car are read from file dataIn.
-Car GetCar(ifstream& dataIn);
+Car *GetCar(ifstream& dataIn);
 
 // Pre:  car holds a valid Car variable.
 // Post: The fields of car are written to the screen,
 //       appropriately labeled.
-void WriteCar(Car car);
+void WriteCar(Car *car);
 
 int main () {
   Car  *carPtr;     // Declare a pointer to a Car struct (This is only a pointer)
@@ -27,12 +27,12 @@ int main () {
 
   dataIn.open("cars.dat");
 
-  *carPtr = GetCar(dataIn);
+  carPtr = GetCar(dataIn);
   while (dataIn) {
     carPtr->price = carPtr->price * 1.10;
-    WriteCar(*carPtr);
+    WriteCar(carPtr);
     carCount++;
-    *carPtr = GetCar(dataIn);
+    carPtr = GetCar(dataIn);
   }
 
   cout << carCount << " cars processed.\n";
@@ -42,23 +42,25 @@ int main () {
 
 //*****************************************************
 
-Car GetCar(ifstream&  dataIn) {
-  Car car;
-  dataIn >> car.customer.firstname >> car.customer.lastname;
-  dataIn >> car.price  >> car.purchased.day
-         >> car.purchased.month  >> car.purchased.year;
+Car *GetCar(ifstream&  dataIn) {
+  Car *carPtr;
+  carPtr = new Car;
+
+  dataIn >> carPtr->customer.firstname >> carPtr->customer.lastname;
+  dataIn >> carPtr->price  >> carPtr->purchased.day
+         >> carPtr->purchased.month  >> carPtr->purchased.year;
   dataIn.ignore(2, '\n');
-  return car;
+  return carPtr;
 }
 
 //*****************************************************
 
-void  WriteCar(Car  car) {
+void  WriteCar(Car  *carPtr) {
   cout << fixed << noshowpoint << setprecision(0);
-  cout << "Customer: " << car.customer.firstname << " "
-                       << car.customer.lastname << endl
-	   << "Price:    $" << car.price << endl
-	   << "Purchased:"  << car.purchased.day << "/"
-	   << car.purchased.month << "/"
-	   << car.purchased.year << endl;
+  cout << "Customer: " << carPtr->customer.firstname << " "
+                       << carPtr->customer.lastname << endl
+	   << "Price:    $" << carPtr->price << endl
+	   << "Purchased:"  << carPtr->purchased.day << "/"
+	   << carPtr->purchased.month << "/"
+	   << carPtr->purchased.year << endl;
 }
