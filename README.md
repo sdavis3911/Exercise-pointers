@@ -15,9 +15,9 @@ Before beginning, answer the following:
         Since Car is a struct and has multiple members, how does making car a pointer change how you will access those members.
 
 Ready? Now modify cars.cpp so that it uses the following definitions and assignments. (i.e., replace the Car car, declaration with the following three lines and then modify the rest of main() so that it uses carPtr rather than accessing the car variable directly.)
-
+```
   Car  *carPtr;     // Declare a pointer to a Car struct (This is only a pointer)
   Car car;          // Still need a car variable to hold the actual data values
-  carPtr = &car;    // Point your carPtr at the memory location of car
-
+  carPtr = &car;    // Point your carPtr at the memory location of car </b>
+```
 Submit: Updated and commented cars.cpp file. (Just to clarify, you shouldn't be changing either of the functions or modifying anything in car.h or cars.dat.)
